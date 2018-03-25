@@ -1,2 +1,2 @@
 # PIP requirements file.
-BeautifulSoup
+BeautifulSoup4
