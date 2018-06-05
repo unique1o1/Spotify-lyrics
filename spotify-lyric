@@ -45,18 +45,18 @@ while 1:
         data = {'q': str(metadata['xesam:title']) +
                 ' ' + str(metadata['xesam:artist'][0])}
         try:
-            
-            genius = requests.get(search_url, params=data, headers=headers).json()
+
+            genius = requests.get(search_url, params=data,
+                                  headers=headers).json()
             lyrics_url = genius["response"]["hits"][0]["result"]['url']
             page = requests.get(lyrics_url)
 
             html = BeautifulSoup(page.content, "html.parser")
             lyrics_ = html.find("div", class_="lyrics").get_text()
-         except Exception:
+        except Exception:
             print 'error occured when fetching lyric'
             continue
-            
-         
+
         terminal_cols = os.popen('tput cols').read()
         try:
             print_lyrics([''.join(x) for x in lyrics_.splitlines()])
