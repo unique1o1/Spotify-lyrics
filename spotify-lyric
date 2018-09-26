@@ -42,8 +42,8 @@ while 1:
     if metadata != old_metadata:
         old_metadata = metadata
 
-        data = {'q': str(metadata['xesam:title']) +
-                ' ' + str(metadata['xesam:artist'][0])}
+        data = {'q': metadata['xesam:title'] +
+                ' ' + metadata['xesam:artist'][0]}
         try:
 
             genius = requests.get(search_url, params=data,
